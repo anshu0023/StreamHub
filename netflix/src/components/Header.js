@@ -23,7 +23,10 @@ const Header = () => {
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get(`${API_END_POINT}/logout`);
+            const res = await axios.get(`${API_END_POINT}/logout`, {
+                withCredentials: true, // ✅ include cookies
+            });
+
             if (res.data.success) {
                 toast.success(res.data.message);
             }
